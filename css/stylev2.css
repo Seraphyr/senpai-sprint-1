@@ -1,0 +1,142 @@
+:root {
+    --violet: hsl(263, 55%, 52%);
+    --dark-blue: hsl(219, 29%, 14%);
+    --dark-grayish-blue: hsl(217, 19%, 35%);
+    --white: hsl(0, 0%, 100%);
+    --gray: hsl(0, 0%, 81%);
+    --light-gray: hsl(210, 46%, 95%);
+    --light-violet: hsl(263, 52%, 70%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--light-gray);
+    font-size: 13px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-weight: 500;
+    display: flex;
+    /* desde esta parte de body fue agregada en última versión*/
+    height: 100vh;
+    justify-content: center;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.container {
+    max-width: 1440px;
+    /*con 1200px queda más junto*/
+    /* padding: 2rem 1rem; */
+    /* margin: 0 auto; */
+    display: grid;
+    grid-gap: 2rem;
+    /*puede ser 1 rem*/
+}
+
+.card {
+    background-color: var(--white);
+    border-radius: 1rem;
+    color: var(--dark-grayish-blue);
+    padding: 2rem;
+    /*puede ser 1 rem también*/
+}
+
+
+.card.card__primary {
+    background-color: var(--violet);
+    background-image: url("../imgs/bg-pattern-quotation.svg");
+    background-repeat: no-repeat;
+    background-size: 8rem;
+    background-position: 85% 0%;
+    color: var(--light-gray);
+}
+
+.card.card__gray {
+    background-color: var(--dark-grayish-blue);
+    color: var(--light-gray);
+}
+
+.card.card__dark {
+    background-color: var(--dark-blue);
+    color: var(--light-gray);
+}
+
+.card__header {
+    display: flex;
+    align-items: center;
+}
+
+.card__header--image>img {
+    height: 2.5rem;
+    width: 2.5rem;
+    border: 2px solid var(--gray);
+    border-radius: 50%;
+}
+
+.card.card__primary .card__header--image>img {
+    border: 2px solid var(--light-violet);
+}
+
+.card.card__dark .card__header--image>img {
+    border: 2px solid var(--light-violet);
+}
+
+.card__header--info {
+    margin-left: 1rem;
+}
+
+.card__header--info>p {
+    opacity: 0.5;
+}
+
+.card__body h4 {
+    /* Título primer quote */
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+
+.card__body p {
+    font-size: 0.85rem;
+    opacity: 0.75;
+    padding-top: 1rem;
+}
+
+@media screen and (min-width: 375px) {
+
+    /*estilos de desafio dice - Mobile: 375px se testean varios parámetros y 1024px es que da mejor resultado para colapsar en una fila las tarjetas de forma suavizada*/
+    .container {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    }
+
+    body {
+        align-items: center;
+        /*esta parte de body fue agregada en última versión*/
+    }
+
+    .card__primary {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .card__light {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .card__dark {
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+
+    .card__long {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column-start: 4;
+        grid-column-end: 5;
+    }
+}
